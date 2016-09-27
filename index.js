@@ -42,7 +42,8 @@ bot.on('start', () => {
                         motor.write(0);
                         wheelState = WHEEL_IDLE;
                         setTimeout(() => {
-                            bot.postMessage(data.channel, `We're going to ${bars[barIndex].name}`, {
+                            var bar = bars[barIndex];
+                            bot.postMessage(data.channel, `We're going to <${bar.url}|${bar.name}>\n${bar.address}`, {
                                 icon_emoji: ':beers:',
                             });
                         }, 2000);
