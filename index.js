@@ -44,8 +44,8 @@ bot.on('start', () => {
                     setTimeout(() => {
                       bot.postMessage(data.channel, `We're going to ${bars[barIndex].name}`, {
                           icon_emoji: ':beers:',
-                      }, 2000);
-                    }
+                      });
+                    }, 2000);
                   }, 10000);
                 }
 
