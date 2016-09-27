@@ -2,9 +2,9 @@ const SlackBot = require('slackbots');
 const config = require('./config.json');
 const Gpio = require('onoff').Gpio;
 
-const sensorTest1 = new Gpio(21, 'in');
-const sensorTest2 = new Gpio(29, 'in');
-const sensorTest3 = new Gpio(40, 'in');
+const sensorTest1 = new Gpio(21, 'in', 'both');
+const sensorTest2 = new Gpio(29, 'in', 'both');
+const sensorTest3 = new Gpio(40, 'in', 'both');
 
 const bot = new SlackBot(config);
 function onWatch(){
