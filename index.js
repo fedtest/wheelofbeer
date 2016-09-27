@@ -41,7 +41,7 @@ bot.on('start', () => {
                   setTimeout(() => {
                     motor.write(0);
                     wheelState = WHEEL_IDLE;
-                    setTimeout() => {
+                    setTimeout(() => {
                       bot.postMessage(data.channel, `We're going to ${bars[barIndex].name}`, {
                           icon_emoji: ':beers:',
                       }, 2000);
