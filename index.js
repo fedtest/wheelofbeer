@@ -5,7 +5,7 @@ const config = require('./config.json');
 const bars = require('./bars.json');
 const Gpio = require('onoff').Gpio;
 
-const portId = [21, 29, 40];
+const portId = [5, 6, 13, 19, 26, 16, 20, 21];
 const sensors = [];
 
 let barIndex = 0;

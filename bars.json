@@ -1,14 +1,50 @@
 [
     {
-        "name": "Brew Dog",
-        "address": "Sankt Eriksgatan 56"
+        "name": "Clarion Hotel Sign",
+        "open": "11.00 - 24.00",
+        "phone": "+46 8 676 98 00",
+        "address": "Östra Järnvägsgatan 35"
     },
     {
-        "name": "F20",
-        "address": "Fleminggatan 20"
+        "name": "Dovas",
+        "address": "Sankt Eriksgatan 53",
+        "phone": "08-650 80 49",
+        "open": "må-fr 11AM–1AM"
     },
     {
-        "name": "Coop konsum",
-        "address": "Scheelegatan 12083"
+        "name": "BrewDog",
+        "address": "Sankt Eriksgatan 56",
+        "phone": "08-650 21 10",
+        "open": "må-fre 4-12"
+    },
+    {
+        "name": "Flying Scotsman Inn",
+        "address": "Fleminggatan 28",
+        "phone": "08-651 22 00",
+        "open": ""
+    },
+    {
+        "name": "Blekholmen",
+        "address": "Blekholmsterrassen 15",
+        "phone": "08-698 80 80",
+        "open": "må 1-11"
+    },
+    {
+        "name": "Belgobaren",
+        "address": "Bryggargatan 12",
+        "phone": "08-24 66 40",
+        "open": "11-01"
+    },
+    {
+        "name": "Icebar",
+        "phone": "08-505 635 20",
+        "open": "11.15-12",
+        "address": "Vasaplan 4"
+    },
+    {
+        "name": "Skybar",
+        "phone": "08-506 540 00",
+        "open": "4-12",
+        "address": "Vasagatan 1"
     }
 ]
