@@ -3,48 +3,56 @@
         "name": "Clarion Hotel Sign",
         "open": "11.00 - 24.00",
         "phone": "+46 8 676 98 00",
-        "address": "Östra Järnvägsgatan 35"
+        "address": "Östra Järnvägsgatan 35",
+        "url": "https://www.nordicchoicehotels.se/clarion/clarion-hotel-sign/"
     },
     {
         "name": "Dovas",
         "address": "Sankt Eriksgatan 53",
         "phone": "08-650 80 49",
-        "open": "må-fr 11AM–1AM"
+        "open": "må-fr 11AM–1AM",
+        "url": "https://www.facebook.com/pages/Restaurang-Dovas/171912792849125"
     },
     {
         "name": "BrewDog",
         "address": "Sankt Eriksgatan 56",
         "phone": "08-650 21 10",
-        "open": "må-fre 4-12"
+        "open": "må-fre 4-12",
+        "url": "https://www.brewdog.com/bars/worldwide/kungsholmen"
     },
     {
         "name": "Flying Scotsman Inn",
         "address": "Fleminggatan 28",
         "phone": "08-651 22 00",
-        "open": ""
+        "open": "",
+        "url": "http://flying.nu/"
     },
     {
         "name": "Blekholmen",
         "address": "Blekholmsterrassen 15",
         "phone": "08-698 80 80",
-        "open": "må 1-11"
+        "open": "må 1-11",
+        "url": "http://blekholmen.se/"
     },
     {
         "name": "Belgobaren",
         "address": "Bryggargatan 12",
         "phone": "08-24 66 40",
-        "open": "11-01"
+        "open": "11-01",
+        "url": "http://www.belgobaren.se/"
     },
     {
         "name": "Icebar",
         "phone": "08-505 635 20",
         "open": "11.15-12",
-        "address": "Vasaplan 4"
+        "address": "Vasaplan 4",
+        "url": "http://www.icebarstockholm.se/"
     },
     {
         "name": "Skybar",
         "phone": "08-506 540 00",
         "open": "4-12",
-        "address": "Vasagatan 1"
+        "address": "Vasagatan 1",
+        "url": "http://www.skybarstockholm.se/"
     }
 ]
