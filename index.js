@@ -50,7 +50,8 @@ bot.on('start', () => {
                 }
 
             } else if (data.text.toLowerCase() === 'trigger bar') {
-                bot.postMessage(data.channel, `We're going to ${bars[barIndex].name}`, {
+                var bar = bars[barIndex];
+                bot.postMessage(data.channel, `We're going to <${bar.url}|${bar.name}>\n${bar.address}`, {
                     icon_emoji: ':beers:',
                 });
             }
