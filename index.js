@@ -1,3 +1,5 @@
+'use strict';
+
 const SlackBot = require('slackbots');
 const config = require('./config.json');
 const bars = require('./bars.json');
