@@ -30,23 +30,23 @@ bot.on('start', () => {
         if (data.type === 'message') {
             if (data.text.toLowerCase() === 'time for beer') {
                 if (wheelState === WHEEL_SPINNING) {
-                  bot.postMessage(data.channel, 'wheel is still spinning, wait for it...')
+                    bot.postMessage(data.channel, 'wheel is still spinning, wait for it...')
                 }
                 else if (wheelState === WHEEL_IDLE) {
-                  bot.postMessage(data.channel, 'spinning wheel, wait for it....', {
-                       icon_emoji: ':beer:',
-                  });
-                  motor.write(1);
-                  wheelState = WHEEL_SPINNING;
-                  setTimeout(() => {
-                    motor.write(0);
-                    wheelState = WHEEL_IDLE;
+                    bot.postMessage(data.channel, 'spinning wheel, wait for it....', {
+                         icon_emoji: ':beer:',
+                    });
+                    motor.write(1);
+                    wheelState = WHEEL_SPINNING;
                     setTimeout(() => {
-                      bot.postMessage(data.channel, `We're going to ${bars[barIndex].name}`, {
-                          icon_emoji: ':beers:',
-                      });
-                    }, 2000);
-                  }, 10000);
+                        motor.write(0);
+                        wheelState = WHEEL_IDLE;
+                        setTimeout(() => {
+                            bot.postMessage(data.channel, `We're going to ${bars[barIndex].name}`, {
+                                icon_emoji: ':beers:',
+                            });
+                        }, 2000);
+                    }, 10000);
                 }
 
             } else if (data.text.toLowerCase() === 'trigger bar') {
@@ -55,5 +55,17 @@ bot.on('start', () => {
                 });
             }
         }
+    });
+
+    bot.on('close', () => {
+        console.log('Connection to slack closed');
+        // Try to reconnect after 5 sec.
+        setTimeout(() => {
+            bot.login();
+        }, 5000);
+    });
+
+    bot.on('error', (err) => {
+        console.log(err);
     });
 });
