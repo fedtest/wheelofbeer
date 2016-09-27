@@ -1,0 +1,11 @@
+{
+  "name": "wheel-of-beer",
+  "version": "1.0.0",
+  "description": "The wheel of beer slackbot app",
+  "main": "index.js",
+  "author": "Com Hem Team Web",
+  "license": "ISC",
+  "dependencies": {
+    "slackbots": "^0.5.2"
+  }
+}
