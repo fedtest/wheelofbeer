@@ -8,7 +8,7 @@ const Gpio = require('onoff').Gpio;
 const portId = [21, 29, 40];
 const sensors = [];
 
-let barIndex;
+let barIndex = 0;
 
 portId.forEach(port => sensors.push(new Gpio(port, 'in', 'falling')));
 
@@ -16,7 +16,9 @@ const bot = new SlackBot(config);
 
 bot.on('start', () => {
     console.log('Bot is online');
-    sensors.forEach((sensor, index) => (barIndex = index));
+    sensors.forEach((sensor, index) => {
+        sensor.watch(() => (barIndex = index));
+    });
 
     bot.on('message', (data) => {
         if (data.type === 'message') {
