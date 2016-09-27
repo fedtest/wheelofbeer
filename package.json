@@ -6,6 +6,7 @@
   "author": "Com Hem Team Web",
   "license": "ISC",
   "dependencies": {
-    "slackbots": "^0.5.2"
+    "slackbots": "^0.5.2",
+    "onoff": "1.1.1",
   }
 }
