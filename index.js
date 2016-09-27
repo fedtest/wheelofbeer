@@ -10,9 +10,11 @@ bot.on('start', () => {
     console.log('Bot is online');
     sensorTest.watch((err) => {
         if (err) {
+            console.log('Error');
             throw err;
         }
         else{
+            console.log('Got input');
             bot.postMessage(data.channel, 'Input on 4, Fleming it is.');
         }
     } );
