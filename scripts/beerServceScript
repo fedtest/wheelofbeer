@@ -1,0 +1,24 @@
+#!/bin/bash
+start() {
+  node ../index.js &
+   echo $!>/var/run/beerwheel.pid
+}
+
+stop() {
+    kill `cat /var/run/beerwheel.pid`
+    rm /var/run/beerwheel.pid
+
+}
+
+status() {
+    if [ -e /var/run/beerwheel.pid ]; then
+       echo The beerwheel is running, pid=`cat /var/run/beerwheel.pid`
+    else
+       echo beerwheel is NOT running
+       exit 1
+    fi
+}
+
+case $1 in
+  start|stop|status) "$1" ;;
+esac
