@@ -21,7 +21,6 @@ const BEERLOCATOR_SONG = new Sound(audioConfig.beerLocatorSong);
 
 let wheelState = WHEEL_IDLE;
 let barIndex = 0;
-let botUserId;
 
 portId.forEach(port => sensors.push(new Gpio(port, 'in', 'falling')));
 
@@ -29,10 +28,6 @@ const bot = new SlackBot(config);
 
 bot.on('start', () => {
     console.log('Bot is online');
-    bot.getUserId(config.name).then(userId => {
-      console.log(userId);
-      botUserId = userId;
-    });
     sensors.forEach((sensor, index) => {
         sensor.watch(() => {
           barIndex = index;
@@ -70,7 +65,7 @@ bot.on('start', () => {
                     }, spinTime);
                 }
 
-            } 
+            }
         }
     });
 
