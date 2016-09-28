@@ -1,5 +1,19 @@
 [
     {
+        "name": "Icebar",
+        "phone": "08-505 635 20",
+        "open": "11.15-12",
+        "address": "Vasaplan 4",
+        "url": "http://www.icebarstockholm.se/"
+    },
+    {
+        "name": "Skybar",
+        "phone": "08-506 540 00",
+        "open": "4-12",
+        "address": "Vasagatan 1",
+        "url": "http://www.skybarstockholm.se/"
+    },
+    {
         "name": "Clarion Hotel Sign",
         "open": "11.00 - 24.00",
         "phone": "+46 8 676 98 00",
@@ -40,19 +54,6 @@
         "phone": "08-24 66 40",
         "open": "11-01",
         "url": "http://www.belgobaren.se/"
-    },
-    {
-        "name": "Icebar",
-        "phone": "08-505 635 20",
-        "open": "11.15-12",
-        "address": "Vasaplan 4",
-        "url": "http://www.icebarstockholm.se/"
-    },
-    {
-        "name": "Skybar",
-        "phone": "08-506 540 00",
-        "open": "4-12",
-        "address": "Vasagatan 1",
-        "url": "http://www.skybarstockholm.se/"
     }
+
 ]
