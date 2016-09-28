@@ -26,6 +26,9 @@ bot.on('start', () => {
         sensor.watch(() => {
           barIndex = index;
           console.log(`Sensor index ${index}`);
+          console.log(sensors.map(sensor => {
+              return sensor.readSync()
+          }));
         });
     });
 
