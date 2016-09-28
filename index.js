@@ -76,7 +76,7 @@ bot.on('start', () => {
                             bot.postMessage(data.channel, describe.bar(bar), {
                                 icon_emoji: ':beers:',
                             });
-                        }, 7500);
+                        }, 9000);
                     }, spinTime);
                 }
             } else if (data.text.toLowerCase() === 'trigger bar') {
@@ -84,11 +84,7 @@ bot.on('start', () => {
                 bot.postMessage(data.channel, describe.bar(bar), {
                     icon_emoji: ':beers:',
                 });
-            } else if (data.text.toLowerCase().match(/(^| )(öl|\bbeers?)\b/)) {
-                bot.postMessage(data.channel, "Mmm beer...", {
-                    icon_emoji: ':beer:',
-                })
-            }
+            } 
         }
     });
 
