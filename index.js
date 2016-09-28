@@ -8,8 +8,8 @@ const Gpio = require('onoff').Gpio;
 const Sound = require('node-aplay');
 const describe = require('./describe.js')
 
-const minSpinTimeMS = 20000;
-const maxSpinTimeMS = 30000;
+const minSpinTimeMS = 15000;
+const maxSpinTimeMS = 25000;
 
 const portId = [5, 6, 13, 19, 26, 16, 20, 21];
 const sensors = [];
