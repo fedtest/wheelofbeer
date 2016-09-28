@@ -28,13 +28,17 @@ portId.forEach(port => sensors.push(new Gpio(port, 'in', 'falling')));
 function startup(){
     try{
         bot = new SlackBot(config);
+        console.log('Bot config successful');
         bot.on('start', runBot);
     }catch(err){
+        console.log('Bot config not successful yet');
         setTimeout(1000, startup);
     }
 }
 function runBot(){
     console.log('Bot is online');
+    bot.postMessageToChannel('random', 'I am back');
+
     sensors.forEach((sensor, index) => {
         sensor.watch(() => {
           barIndex = index;
