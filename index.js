@@ -70,16 +70,7 @@ bot.on('start', () => {
                     }, spinTime);
                 }
 
-            } else if (data.text.toLowerCase() === 'trigger bar') {
-                var bar = bars[barIndex];
-                bot.postMessage(data.channel, `We're going to <${bar.url}|${bar.name}>\n${bar.address}`, {
-                    icon_emoji: ':beers:',
-                });
-            } else if (data.text.toLowerCase().match(/(^| )(öl|beers?)\b/) && data.user !== botUserId) {
-                bot.postMessage(data.channel, "Mmm beer...", {
-                    icon_emoji: ':beer:',
-                })
-            }
+            } 
         }
     });
 
