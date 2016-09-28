@@ -3,7 +3,7 @@ Description=Run the Wheel of Beer service
 
 [Service]
 Type=oneshot
-ExecStart=/home/pi/scripts/beerServiceScript start
+ExecStart=/home/pi/wheelofbeer/scripts/beerServiceScript start
 ExecStop=/usr/bin/beerservice stop
 RemainAfterExit=yes
 
