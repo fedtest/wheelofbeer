@@ -46,7 +46,7 @@ bot.on('start', () => {
                 }
                 else if (wheelState === WHEEL_IDLE) {
                     const spinTime = minSpinTimeMS + (Math.random * (maxSpinTimeMS - minSpinTimeMS)
-                    bot.postMessage(data.channel, `spinning wheel for ${spinTime/1000} s, wait for it....`, {
+                    bot.postMessage(data.channel, `spinning wheel for ${ (spinTime / 1000)} s, wait for it....`, {
                          icon_emoji: ':beer:',
                     });
                     motor.write(1);
