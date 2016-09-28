@@ -28,13 +28,19 @@ portId.forEach(port => sensors.push(new Gpio(port, 'in', 'falling')));
 function startup(){
     try{
         bot = new SlackBot(config);
+        console.log('Bot config successful');
         bot.on('start', runBot);
     }catch(err){
+        console.log('Bot config not successful yet');
         setTimeout(1000, startup);
     }
 }
 function runBot(){
     console.log('Bot is online');
+    bot.postMessageToChannel('random', 'I am back', {
+         icon_emoji: ':beer:',
+    });
+
     sensors.forEach((sensor, index) => {
         sensor.watch(() => {
           barIndex = index;
@@ -50,7 +56,9 @@ function runBot(){
         if (data.type === 'message' && data.text) {
             if (data.text.toLowerCase() === 'time for beer') {
                 if (wheelState === WHEEL_SPINNING) {
-                    bot.postMessage(data.channel, 'wheel is still spinning, wait for it...')
+                    bot.postMessage(data.channel, 'wheel is still spinning, wait for it...', {
+                         icon_emoji: ':beer:',
+                    });
                 }
                 else if (wheelState === WHEEL_IDLE) {
                     const spinTime = minSpinTimeMS + (Math.random() * (maxSpinTimeMS - minSpinTimeMS));
@@ -61,11 +69,15 @@ function runBot(){
                     BEERLOCATOR_SONG.play();
 
                     setTimeout(() => {
-                        bot.postMessage(data.channel, 'Still spinning...');
+                        bot.postMessage(data.channel, 'Still spinning...', {
+                             icon_emoji: ':beer:',
+                        });
                     }, (spinTime / 2));
 
                     setTimeout(() => {
-                        bot.postMessage(data.channel, 'Almost there...');
+                        bot.postMessage(data.channel, 'Almost there...', {
+                             icon_emoji: ':beer:',
+                        });
                     }, ((spinTime / 2) + (spinTime / 4)));
 
                     wheelState = WHEEL_SPINNING;
