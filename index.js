@@ -6,6 +6,7 @@ const audioConfig = require('./audio-config.json');
 const bars = require('./bars.json');
 const Gpio = require('onoff').Gpio;
 const Sound = require('node-aplay');
+const describe = require('./describe.js')
 
 const minSpinTimeMS = 20000;
 const maxSpinTimeMS = 30000;
@@ -25,9 +26,13 @@ let barIndex = 0;
 portId.forEach(port => sensors.push(new Gpio(port, 'in', 'falling')));
 
 const bot = new SlackBot(config);
+function printLocation(loc){
+    return 'printing...';
+}
 
 bot.on('start', () => {
     console.log('Bot is online');
+    console.log(printLocation);
     sensors.forEach((sensor, index) => {
         sensor.watch(() => {
           barIndex = index;
@@ -58,7 +63,7 @@ bot.on('start', () => {
                         wheelState = WHEEL_IDLE;
                         setTimeout(() => {
                             var bar = bars[barIndex];
-                            bot.postMessage(data.channel, `We're going to <${bar.url}|${bar.name}>\n${bar.address}`, {
+                            bot.postMessage(data.channel, describe.bar(bar), {
                                 icon_emoji: ':beers:',
                             });
                         }, 2000);
@@ -67,7 +72,7 @@ bot.on('start', () => {
 
             } else if (data.text.toLowerCase() === 'trigger bar') {
                 var bar = bars[barIndex];
-                bot.postMessage(data.channel, `We're going to <${bar.url}|${bar.name}>\n${bar.address}`, {
+                bot.postMessage(data.channel, describe.bar(bar), {
                     icon_emoji: ':beers:',
                 });
             } else if (data.text.toLowerCase().match(/(^| )(öl|\bbeers?)\b/)) {
