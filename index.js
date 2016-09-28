@@ -69,7 +69,6 @@ bot.on('start', () => {
                         }, 2000);
                     }, spinTime);
                 }
-
             } else if (data.text.toLowerCase() === 'trigger bar') {
                 var bar = bars[barIndex];
                 bot.postMessage(data.channel, describe.bar(bar), {
