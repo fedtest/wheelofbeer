@@ -1,5 +1,7 @@
 [Unit]
 Description=Run the Wheel of Beer service
+Wants=network-online.target
+After=network.target network-online.target
 
 [Service]
 Type=oneshot

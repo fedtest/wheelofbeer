@@ -5,7 +5,7 @@ const config = require('./config.json');
 const audioConfig = require('./audio-config.json');
 const bars = require('./bars.json');
 const Gpio = require('onoff').Gpio;
-const Sound = require('node-aplay');
+//const Sound = require('node-aplay');
 const describe = require('./describe.js')
 
 const minSpinTimeMS = 15000;
@@ -18,8 +18,8 @@ const motor = new Gpio(4, 'out');
 
 const WHEEL_SPINNING = 'SPINNING';
 const WHEEL_IDLE = 'IDLE';
-const BEERLOCATOR_SONG = new Sound(audioConfig.beerLocatorSong);
-const TICK = new Sound(audioConfig.tick);
+const BEERLOCATOR_SONG = {};//new Sound(audioConfig.beerLocatorSong);
+const TICK = {};//new Sound(audioConfig.tick);
 
 let wheelState = WHEEL_IDLE;
 let barIndex = 0;
@@ -84,7 +84,7 @@ bot.on('start', () => {
                 bot.postMessage(data.channel, describe.bar(bar), {
                     icon_emoji: ':beers:',
                 });
-            } 
+            }
         }
     });
 
