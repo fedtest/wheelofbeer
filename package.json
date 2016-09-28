@@ -8,6 +8,7 @@
   "dependencies": {
     "node-aplay": "^1.0.3",
     "onoff": "1.1.1",
-    "slackbots": "^0.5.2"
+    "slackbots": "^0.5.2",
+    "is-online": "^5.1.2"
   }
 }

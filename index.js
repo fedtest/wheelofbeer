@@ -7,6 +7,7 @@ const bars = require('./bars.json');
 const Gpio = require('onoff').Gpio;
 const Sound = require('node-aplay');
 const describe = require('./describe.js')
+const isOnline = require('is-online');
 
 const minSpinTimeMS = 15000;
 const maxSpinTimeMS = 25000;
@@ -26,14 +27,9 @@ let barIndex = 0;
 let bot;
 portId.forEach(port => sensors.push(new Gpio(port, 'in', 'falling')));
 function startup(){
-    try{
-        bot = new SlackBot(config);
-        console.log('Bot config successful');
-        bot.on('start', runBot);
-    }catch(err){
-        console.log('Bot config not successful yet');
-        setTimeout(1000, startup);
-    }
+    console.log('Online, starting bot...');
+    bot = new SlackBot(config);
+    bot.on('start', runBot);
 }
 function runBot(){
     console.log('Bot is online');
@@ -113,5 +109,4 @@ function runBot(){
         console.log(err);
     });
 }
-
-startup();
+isOnline(startup);
