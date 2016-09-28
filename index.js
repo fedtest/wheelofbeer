@@ -2,8 +2,10 @@
 
 const SlackBot = require('slackbots');
 const config = require('./config.json');
+const audioConfig = require('./audio-config.json');
 const bars = require('./bars.json');
 const Gpio = require('onoff').Gpio;
+const Sound = require('node-aplay');
 
 const portId = [5, 6, 13, 19, 26, 16, 20, 21];
 const sensors = [];
@@ -12,6 +14,7 @@ const motor = new Gpio(4, 'out');
 
 const WHEEL_SPINNING = 'SPINNING';
 const WHEEL_IDLE = 'IDLE';
+const BEERLOCATOR_SONG = new Sound(audioConfig.beerLocatorSong);
 
 let wheelState = WHEEL_IDLE;
 let barIndex = 0;
@@ -43,6 +46,8 @@ bot.on('start', () => {
                          icon_emoji: ':beer:',
                     });
                     motor.write(1);
+                    BEERLOCATOR_SONG.play();
+                    
                     wheelState = WHEEL_SPINNING;
                     setTimeout(() => {
                         motor.write(0);
