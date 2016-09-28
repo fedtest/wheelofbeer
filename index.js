@@ -7,8 +7,8 @@ const bars = require('./bars.json');
 const Gpio = require('onoff').Gpio;
 const Sound = require('node-aplay');
 
-const minSpinTimeMS = 5000;
-const maxSpinTimeMS = 10000;
+const minSpinTimeMS = 20000;
+const maxSpinTimeMS = 30000;
 
 const portId = [5, 6, 13, 19, 26, 16, 20, 21];
 const sensors = [];
@@ -46,7 +46,7 @@ bot.on('start', () => {
                 }
                 else if (wheelState === WHEEL_IDLE) {
                     const spinTime = minSpinTimeMS + (Math.random() * (maxSpinTimeMS - minSpinTimeMS));
-                    bot.postMessage(data.channel, `spinning wheel for ${ (spinTime / 1000)} s, wait for it....`, {
+                    bot.postMessage(data.channel, `spinning wheel for ${ Math.floor(spinTime / 1000)} s, wait for it....`, {
                          icon_emoji: ':beer:',
                     });
                     motor.write(1);
