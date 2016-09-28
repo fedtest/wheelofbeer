@@ -109,4 +109,4 @@ function runBot(){
         console.log(err);
     });
 }
-isOnline(startup);
+setTimeout(() => isOnline(startup), 30000);
