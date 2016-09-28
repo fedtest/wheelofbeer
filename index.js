@@ -53,11 +53,19 @@ bot.on('start', () => {
                 }
                 else if (wheelState === WHEEL_IDLE) {
                     const spinTime = minSpinTimeMS + (Math.random() * (maxSpinTimeMS - minSpinTimeMS));
-                    bot.postMessage(data.channel, `spinning wheel for ${ Math.floor(spinTime / 1000)} s, wait for it....`, {
+                    bot.postMessage(data.channel, `Spinning wheel for ${ Math.floor(spinTime / 1000)} s, wait for it....`, {
                          icon_emoji: ':beer:',
                     });
                     motor.write(1);
                     BEERLOCATOR_SONG.play();
+
+                    setTimeout(() => {
+                        bot.postMessage(data.channel, 'Still spinning...');
+                    }, (spinTime / 2);
+
+                    setTimeout(() => {
+                        bot.postMessage(data.channel, 'Almost there...');
+                    }, ((spinTime / 2) + (spinTime / 4)));
 
                     wheelState = WHEEL_SPINNING;
                     setTimeout(() => {
