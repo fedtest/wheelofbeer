@@ -61,7 +61,7 @@ bot.on('start', () => {
 
                     setTimeout(() => {
                         bot.postMessage(data.channel, 'Still spinning...');
-                    }, (spinTime / 2);
+                    }, (spinTime / 2));
 
                     setTimeout(() => {
                         bot.postMessage(data.channel, 'Almost there...');
