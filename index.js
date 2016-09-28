@@ -28,7 +28,6 @@ portId.forEach(port => sensors.push(new Gpio(port, 'in', 'falling')));
 
 function runBot(){
     console.log('Bot is online');
-    console.log(printLocation);
     sensors.forEach((sensor, index) => {
         sensor.watch(() => {
           barIndex = index;
@@ -94,9 +93,6 @@ function runBot(){
     bot.on('error', (err) => {
         console.log(err);
     });
-}
-function printLocation(loc){
-    return 'printing...';
 }
 function startup(){
     try{
