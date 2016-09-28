@@ -7,6 +7,9 @@ const bars = require('./bars.json');
 const Gpio = require('onoff').Gpio;
 const Sound = require('node-aplay');
 
+const minSpinTimeMS = 5000;
+const maxSpinTimeMS = 10000;
+
 const portId = [5, 6, 13, 19, 26, 16, 20, 21];
 const sensors = [];
 
@@ -25,7 +28,7 @@ const bot = new SlackBot(config);
 
 bot.on('start', () => {
     console.log('Bot is online');
-    
+
     sensors.forEach((sensor, index) => {
         sensor.watch(() => {
           barIndex = index;
@@ -43,7 +46,8 @@ bot.on('start', () => {
                     bot.postMessage(data.channel, 'wheel is still spinning, wait for it...')
                 }
                 else if (wheelState === WHEEL_IDLE) {
-                    bot.postMessage(data.channel, 'spinning wheel, wait for it....', {
+                    const spinTime = minSpinTimeMS + (Math.random * (maxSpinTimeMS - minSpinTimeMS)
+                    bot.postMessage(data.channel, `spinning wheel for ${spinTime/1000} s, wait for it....`, {
                          icon_emoji: ':beer:',
                     });
                     motor.write(1);
@@ -59,7 +63,7 @@ bot.on('start', () => {
                                 icon_emoji: ':beers:',
                             });
                         }, 2000);
-                    }, 10000);
+                    }, spinTime));
                 }
 
             } else if (data.text.toLowerCase() === 'trigger bar') {
