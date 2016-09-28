@@ -29,9 +29,9 @@ const bot = new SlackBot(config);
 
 bot.on('start', () => {
     console.log('Bot is online');
-    bot.getUser(config.name).then(user => {
-      console.log(user);
-      botUserId = user.id;
+    bot.getUserId(config.name).then(userId => {
+      console.log(userId);
+      botUserId = userId;
     });
     sensors.forEach((sensor, index) => {
         sensor.watch(() => {
