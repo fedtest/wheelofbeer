@@ -1,6 +1,5 @@
 #!/bin/bash
 start() {
-  git pull &&
   node index.js &
    echo $!>/var/run/beerwheel.pid
 }
