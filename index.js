@@ -21,6 +21,7 @@ const BEERLOCATOR_SONG = new Sound(audioConfig.beerLocatorSong);
 
 let wheelState = WHEEL_IDLE;
 let barIndex = 0;
+let botUserId;
 
 portId.forEach(port => sensors.push(new Gpio(port, 'in', 'falling')));
 
@@ -28,6 +29,10 @@ const bot = new SlackBot(config);
 
 bot.on('start', () => {
     console.log('Bot is online');
+    bot.getUser(config.name).then(user => {
+      console.log(user);
+      botUserId = user.id;
+    });
     sensors.forEach((sensor, index) => {
         sensor.watch(() => {
           barIndex = index;
@@ -70,7 +75,7 @@ bot.on('start', () => {
                 bot.postMessage(data.channel, `We're going to <${bar.url}|${bar.name}>\n${bar.address}`, {
                     icon_emoji: ':beers:',
                 });
-            } else if (data.text.toLowerCase().match(/(^| )(öl|\bbeers?)\b/)) {
+            } else if (data.text.toLowerCase().match(/(^| )(öl|beers?)\b/) && data.user !== botUserId) {
                 bot.postMessage(data.channel, "Mmm beer...", {
                     icon_emoji: ':beer:',
                 })
