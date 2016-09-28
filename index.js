@@ -76,7 +76,7 @@ bot.on('start', () => {
                             bot.postMessage(data.channel, describe.bar(bar), {
                                 icon_emoji: ':beers:',
                             });
-                        }, 5000);
+                        }, 7500);
                     }, spinTime);
                 }
             } else if (data.text.toLowerCase() === 'trigger bar') {
