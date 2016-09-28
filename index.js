@@ -25,7 +25,6 @@ const bot = new SlackBot(config);
 
 bot.on('start', () => {
     console.log('Bot is online');
-    
     sensors.forEach((sensor, index) => {
         sensor.watch(() => {
           barIndex = index;
@@ -68,8 +67,8 @@ bot.on('start', () => {
                     icon_emoji: ':beers:',
                 });
             } else if (data.text.toLowerCase().match(/\b(öl|beers?)\b/)) {
-                bot.postMessage(data.channel, "Mmm beer..." {
-                    icon_emoji: ':beer:'
+                bot.postMessage(data.channel, "Mmm beer...", {
+                    icon_emoji: ':beer:',
                 })
             }
         }
