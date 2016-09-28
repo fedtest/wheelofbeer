@@ -1,6 +1,6 @@
 #!/bin/bash
 start() {
-  node ../index.js &
+  node index.js &
    echo $!>/var/run/beerwheel.pid
 }
 
