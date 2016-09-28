@@ -23,7 +23,10 @@ const bot = new SlackBot(config);
 bot.on('start', () => {
     console.log('Bot is online');
     sensors.forEach((sensor, index) => {
-        sensor.watch(() => (barIndex = index));
+        sensor.watch(() => {
+          barIndex = index;
+          console.log(`Sensor index ${index}`);
+        });
     });
 
     bot.on('message', (data) => {

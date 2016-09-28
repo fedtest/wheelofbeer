@@ -6,7 +6,8 @@
   "author": "Com Hem Team Web",
   "license": "ISC",
   "dependencies": {
-    "slackbots": "^0.5.2",
-    "onoff": "1.1.1"
+    "node-aplay": "^1.0.3",
+    "onoff": "1.1.1",
+    "slackbots": "^0.5.2"
   }
 }
