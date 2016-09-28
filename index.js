@@ -18,20 +18,15 @@ const motor = new Gpio(4, 'out');
 
 const WHEEL_SPINNING = 'SPINNING';
 const WHEEL_IDLE = 'IDLE';
-const BEERLOCATOR_SONG = {};//new Sound(audioConfig.beerLocatorSong);
-const TICK = {};//new Sound(audioConfig.tick);
+const BEERLOCATOR_SONG = new Sound(audioConfig.beerLocatorSong);
+const TICK = new Sound(audioConfig.tick);
 
 let wheelState = WHEEL_IDLE;
 let barIndex = 0;
 
 portId.forEach(port => sensors.push(new Gpio(port, 'in', 'falling')));
 
-const bot = new SlackBot(config);
-function printLocation(loc){
-    return 'printing...';
-}
-
-bot.on('start', () => {
+function runBot(){
     console.log('Bot is online');
     console.log(printLocation);
     sensors.forEach((sensor, index) => {
@@ -99,4 +94,16 @@ bot.on('start', () => {
     bot.on('error', (err) => {
         console.log(err);
     });
-});
+}
+function printLocation(loc){
+    return 'printing...';
+}
+function startup(){
+    try{
+        const bot = new SlackBot(config);
+        bot.on('start', runBot);
+    }catch(err){
+        setTimeout(1000, startup);
+    }
+}
+startup();
