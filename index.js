@@ -18,6 +18,7 @@ const motor = new Gpio(4, 'out');
 const WHEEL_SPINNING = 'SPINNING';
 const WHEEL_IDLE = 'IDLE';
 const BEERLOCATOR_SONG = new Sound(audioConfig.beerLocatorSong);
+const TICK = new Sound(audioConfig.tick);
 
 let wheelState = WHEEL_IDLE;
 let barIndex = 0;
@@ -32,6 +33,7 @@ bot.on('start', () => {
         sensor.watch(() => {
           barIndex = index;
           console.log(`Sensor index ${index}`);
+          TICK.play();
           console.log(sensors.map(sensor => {
               return sensor.readSync()
           }));
