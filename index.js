@@ -30,7 +30,7 @@ bot.on('start', () => {
     });
 
     bot.on('message', (data) => {
-        if (data.type === 'message') {
+        if (data.type === 'message' && data.text) {
             if (data.text.toLowerCase() === 'time for beer') {
                 if (wheelState === WHEEL_SPINNING) {
                     bot.postMessage(data.channel, 'wheel is still spinning, wait for it...')
