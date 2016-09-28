@@ -25,6 +25,7 @@ const bot = new SlackBot(config);
 
 bot.on('start', () => {
     console.log('Bot is online');
+    
     sensors.forEach((sensor, index) => {
         sensor.watch(() => {
           barIndex = index;
@@ -47,7 +48,7 @@ bot.on('start', () => {
                     });
                     motor.write(1);
                     BEERLOCATOR_SONG.play();
-                    
+
                     wheelState = WHEEL_SPINNING;
                     setTimeout(() => {
                         motor.write(0);
