@@ -23,9 +23,16 @@ const TICK = new Sound(audioConfig.tick);
 
 let wheelState = WHEEL_IDLE;
 let barIndex = 0;
-
+let bot;
 portId.forEach(port => sensors.push(new Gpio(port, 'in', 'falling')));
-
+function startup(){
+    try{
+        bot = new SlackBot(config);
+        bot.on('start', runBot);
+    }catch(err){
+        setTimeout(1000, startup);
+    }
+}
 function runBot(){
     console.log('Bot is online');
     sensors.forEach((sensor, index) => {
@@ -94,12 +101,5 @@ function runBot(){
         console.log(err);
     });
 }
-function startup(){
-    try{
-        const bot = new SlackBot(config);
-        bot.on('start', runBot);
-    }catch(err){
-        setTimeout(1000, startup);
-    }
-}
+
 startup();
