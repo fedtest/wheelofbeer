@@ -67,6 +67,10 @@ bot.on('start', () => {
                 bot.postMessage(data.channel, `We're going to <${bar.url}|${bar.name}>\n${bar.address}`, {
                     icon_emoji: ':beers:',
                 });
+            } else if (data.text.toLowerCase().match(/\b(öl|beers?)\b/)) {
+                bot.postMessage(data.channel, "Mmm beer..." {
+                    icon_emoji: ':beer:'
+                })
             }
         }
     });
