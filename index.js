@@ -6,6 +6,10 @@ const audioConfig = require('./audio-config.json');
 const bars = require('./bars.json');
 const Gpio = require('onoff').Gpio;
 const Sound = require('node-aplay');
+const tone = require("tonegenerator");
+var A440 = tone(440, 3, 30);
+var aSound = new Sound(A440);
+
 
 const portId = [5, 6, 13, 19, 26, 16, 20, 21];
 const sensors = [];
@@ -25,6 +29,8 @@ const bot = new SlackBot(config);
 
 bot.on('start', () => {
     console.log('Bot is online');
+    aSound.play();
+    console.log('sound played');
     sensors.forEach((sensor, index) => {
         sensor.watch(() => {
           barIndex = index;
@@ -47,7 +53,7 @@ bot.on('start', () => {
                     });
                     motor.write(1);
                     BEERLOCATOR_SONG.play();
-                    
+
                     wheelState = WHEEL_SPINNING;
                     setTimeout(() => {
                         motor.write(0);

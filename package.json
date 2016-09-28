@@ -8,6 +8,7 @@
   "dependencies": {
     "node-aplay": "^1.0.3",
     "onoff": "1.1.1",
-    "slackbots": "^0.5.2"
+    "slackbots": "^0.5.2",
+    "tonegenerator": "^0.1.0"
   }
 }
