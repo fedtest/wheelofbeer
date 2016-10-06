@@ -22,6 +22,8 @@ const WHEEL_IDLE = 'IDLE';
 const BEERLOCATOR_SONG = new Sound(audioConfig.beerLocatorSong);
 const TICK = new Sound(audioConfig.tick);
 
+const TIMEOUT_AFTER_END = 10000;
+
 let wheelState = WHEEL_IDLE;
 let barIndex = 0;
 let bot;
@@ -85,7 +87,7 @@ function runBot(){
                             bot.postMessage(data.channel, describe.bar(bar), {
                                 icon_emoji: ':beers:',
                             });
-                        }, 9000);
+                        }, TIMEOUT_AFTER_END);
                     }, spinTime);
                 }
             } else if (data.text.toLowerCase() === 'trigger bar') {
