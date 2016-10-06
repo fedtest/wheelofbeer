@@ -8,7 +8,7 @@ const Gpio = require('onoff').Gpio;
 const Sound = require('node-aplay');
 const describe = require('./describe.js')
 const isOnline = require('is-online');
-const networkInterface = require('os').networkInterfaces();
+const os = require('os');
 
 const minSpinTimeMS = 15000;
 const maxSpinTimeMS = 25000;
@@ -36,7 +36,7 @@ function startup(){
 }
 function runBot(){
     console.log('Bot is online');
-    const ipAddress = networkInterface.wlan0.filter(a => a.familiy === 'IPv4')[0].address;
+    const ipAddress = os.networkInterfaces().wlan0.filter(a => a.familiy === 'IPv4')[0].address;
     bot.postMessageToChannel('random', `I am back, my IP is: ${ipAddress}`, {
          icon_emoji: ':beer:',
     });
