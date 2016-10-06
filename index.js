@@ -8,7 +8,7 @@ const Gpio = require('onoff').Gpio;
 const Sound = require('node-aplay');
 const describe = require('./describe.js')
 const isOnline = require('is-online');
-const networkInterface = require('os').networkInterface();
+const networkInterface = require('os').networkInterfaces();
 
 const minSpinTimeMS = 15000;
 const maxSpinTimeMS = 25000;
