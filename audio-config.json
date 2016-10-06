@@ -1,4 +1,4 @@
 {
-  "beerLocatorSong": "/home/pi/wheelofbeer/audio/beerlocatormixdown1_16bit.wav",
+  "beerLocatorSong": "/home/pi/wheelofbeer/audio/beerlocatormixdown1.wav",
   "tick": "/home/pi/wheelofbeer/audio/tick.wav"
 }
