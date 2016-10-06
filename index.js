@@ -22,7 +22,7 @@ const WHEEL_IDLE = 'IDLE';
 const BEERLOCATOR_SONG = new Sound(audioConfig.beerLocatorSong);
 const TICK = new Sound(audioConfig.tick);
 
-const TIMEOUT_AFTER_END = 10000;
+const TIMEOUT_AFTER_END = 11000;
 
 let wheelState = WHEEL_IDLE;
 let barIndex = 0;
@@ -77,6 +77,12 @@ function runBot(){
                              icon_emoji: ':beer:',
                         });
                     }, ((spinTime / 2) + (spinTime / 4)));
+
+                    setTimeout(() => {
+                        bot.postMessage(data.channel, 'Just a bit longer...', {
+                             icon_emoji: ':beer:',
+                        });
+                    }, (spinTime));
 
                     wheelState = WHEEL_SPINNING;
                     setTimeout(() => {
