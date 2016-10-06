@@ -36,7 +36,7 @@ function startup(){
 }
 function runBot(){
     console.log('Bot is online');
-    const ipAddress = os.networkInterfaces().wlan0.filter(a => a.familiy === 'IPv4')[0].address;
+    const ipAddress = os.networkInterfaces().wlan0.filter(a => a.family === 'IPv4')[0].address;
     bot.postMessageToChannel('random', `I am back, my IP is: ${ipAddress}`, {
          icon_emoji: ':beer:',
     });
