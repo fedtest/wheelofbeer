@@ -104,7 +104,7 @@ function runBot(){
                 bot.postMessage(data.channel, describe.bar(bar), {
                     icon_emoji: ':beers:',
                 });
-            } else if (data.text.startsWith('/say ')) {
+            } else if (data.text.startsWith('say: ')) {
                 say.speak(data.text.substring(5));
             }
         }
