@@ -9,6 +9,7 @@ const Sound = require('node-aplay');
 const describe = require('./describe.js')
 const isOnline = require('is-online');
 const os = require('os');
+const say = require('say');
 
 const minSpinTimeMS = 15000;
 const maxSpinTimeMS = 25000;
@@ -103,6 +104,8 @@ function runBot(){
                 bot.postMessage(data.channel, describe.bar(bar), {
                     icon_emoji: ':beers:',
                 });
+            } else if (data.text.startsWith('/say ')) {
+                say.speak(data.text.substring(5));
             }
         }
     });
