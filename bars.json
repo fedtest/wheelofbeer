@@ -1,24 +1,24 @@
 [
     {
-        "name": "Icebar",
-        "phone": "08-505 635 20",
-        "open": "11.15-12",
-        "address": "Vasaplan 4",
-        "url": "http://www.icebarstockholm.se/"
+        "name": "The Queen's head",
+        "phone": "08-32 86 00",
+        "open": "Må-On 16-00, To 16-01, Fr 3-01",
+        "address": "Drottninggatan 108",
+        "url": "http://www.queenshead.se/"
     },
     {
-        "name": "Skybar",
-        "phone": "08-506 540 00",
-        "open": "4-12",
-        "address": "Vasagatan 1",
-        "url": "http://www.skybarstockholm.se/"
+        "name": "Scala bakfickan",
+        "phone": "08-14 35 75",
+        "open": "Måndag – Lördag från klockan 17.00!",
+        "address": "Wallingatan 32-34",
+        "url": "http://www.scalateatern.se/"
     },
     {
-        "name": "Clarion Hotel Sign",
-        "open": "11.00 - 24.00",
-        "phone": "+46 8 676 98 00",
-        "address": "Östra Järnvägsgatan 35",
-        "url": "https://www.nordicchoicehotels.se/clarion/clarion-hotel-sign/"
+        "name": "Copperfields",
+        "open": "Sö-To 11–01, Fr-Lö 11-03",
+        "phone": "08-654 80 00",
+        "address": "Sankt Eriksgatan 36",
+        "url": "http://copperfields.se/"
     },
     {
         "name": "Dovas",
