@@ -29,6 +29,8 @@ const TIMEOUT_AFTER_END = 11000;
 let wheelState = WHEEL_IDLE;
 let barIndex = 0;
 let bot;
+let previousIpAddress;
+
 portId.forEach(port => sensors.push(new Gpio(port, 'in', 'falling')));
 function startup(){
     console.log('Online, starting bot...');
@@ -38,9 +40,12 @@ function startup(){
 function runBot(){
     console.log('Bot is online');
     const ipAddress = os.networkInterfaces().wlan0.filter(a => a.family === 'IPv4')[0].address;
-    bot.postMessageToChannel('random', `I am back, my IP is: ${ipAddress}`, {
-         icon_emoji: ':beer:',
-    });
+    if (ipAddress !== previousIpAddress) {
+        previousIpAddress = ipAddress;
+        bot.postMessageToChannel('random', `I am back, my IP is: ${ipAddress}`, {
+             icon_emoji: ':beer:',
+        });
+    }
 
     sensors.forEach((sensor, index) => {
         sensor.watch(() => {
