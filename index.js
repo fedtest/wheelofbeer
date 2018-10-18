@@ -8,7 +8,6 @@ const Gpio = require('onoff').Gpio;
 const Sound = require('node-aplay');
 const describe = require('./describe.js')
 const firebaseConfig = require('./firebase-config.js')
-const isOnline = require('is-online');
 const os = require('os');
 const say = require('say');
 const firebase = require('firebase/app');
@@ -45,7 +44,7 @@ function updateLocations() {
 }
 
 function startup(){
-    console.log('Online, starting bot...');
+    console.log('Starting bot...');
     bot = new SlackBot(config);
     bot.on('start', runBot);
 }
@@ -146,4 +145,5 @@ function runBot(){
         process.exit(1);
     });
 }
-setTimeout(() => isOnline(startup), 30000);
+
+startup();
