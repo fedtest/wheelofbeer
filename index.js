@@ -36,13 +36,20 @@ let previousIpAddress;
 
 
 portId.forEach(port => sensors.push(new Gpio(port, 'in', 'falling')));
+
+function updateLocations() {
+    firebase.database().ref("/locations/").once('value').then(snapshot => {
+        const locations = snapshot.val();
+        bars = locations.map(location => ({ name: location }));
+    });
+}
+
 function startup(){
-    console.log('Online, initializing firebase...');
-    firebase.initializeApp(firebaseConfig);
-    console.log('starting bot...');
+    console.log('Online, starting bot...');
     bot = new SlackBot(config);
     bot.on('start', runBot);
 }
+
 function runBot(){
     console.log('Bot is online');
     const ipAddress = os.networkInterfaces().wlan0.filter(a => a.family === 'IPv4')[0].address;
@@ -52,6 +59,8 @@ function runBot(){
              icon_emoji: ':beer:',
         });
     }
+    firebase.initializeApp(firebaseConfig);
+    updateLocations();
 
     sensors.forEach((sensor, index) => {
         sensor.watch(() => {
@@ -109,19 +118,16 @@ function runBot(){
                             });
                         }, TIMEOUT_AFTER_END);
                     }, spinTime);
-                    firebase.database().ref("/locations/").once('value').then(snapshot => {
-                        const locations = snapshot.val();
-                        bars = locations.map(location => ({ name: location }));
-                    })
+                    updateLocations();
                 }
             } else if (data.text.toLowerCase() === 'trigger bar') {
-                var bar = bars[barIndex];
+                const bar = bars[barIndex];
                 bot.postMessage(data.channel, describe.bar(bar), {
                     icon_emoji: ':beers:',
                 });
             } else if (data.text.toLowerCase() === 'list bars') {
-                var bars = bars.map(describe.bar).join('\n');
-                bot.postMessage(data.channel, bars, {
+                const barList = bars.map(describe.bar).join('\n');
+                bot.postMessage(data.channel, barList, {
                     icon_emoji: ':beers:',
                 });
             } else if (data.text.startsWith('say: ')) {
