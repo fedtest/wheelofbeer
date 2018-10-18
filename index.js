@@ -34,11 +34,12 @@ let barIndex = 0;
 let bot;
 let previousIpAddress;
 
-firebase.initializeApp(firebaseConfig);
 
 portId.forEach(port => sensors.push(new Gpio(port, 'in', 'falling')));
 function startup(){
-    console.log('Online, starting bot...');
+    console.log('Online, initializing firebase...');
+    firebase.initializeApp(firebaseConfig);
+    console.log('starting bot...');
     bot = new SlackBot(config);
     bot.on('start', runBot);
 }
@@ -118,6 +119,11 @@ function runBot(){
                 bot.postMessage(data.channel, describe.bar(bar), {
                     icon_emoji: ':beers:',
                 });
+            } else if (data.text.toLowerCase() === 'list bars') {
+                var bars = bars.map(describe.bar).join('\n');
+                bot.postMessage(data.channel, bars, {
+                    icon_emoji: ':beers:',
+                });
             } else if (data.text.startsWith('say: ')) {
                 say.speak(data.text.substring(5));
             }
@@ -126,14 +132,12 @@ function runBot(){
 
     bot.on('close', () => {
         console.log('Connection to slack closed');
-        // Try to reconnect after 5 sec.
-        setTimeout(() => {
-            bot.login();
-        }, 5000);
+        process.exit(1);
     });
 
     bot.on('error', (err) => {
         console.log(err);
+        process.exit(1);
     });
 }
 setTimeout(() => isOnline(startup), 30000);
