@@ -4,7 +4,6 @@ Wants=network-online.target
 After=network.target network-online.target
 
 [Service]
-Type=oneshot
 WorkingDirectory=/home/pi/wheelofbeer/
 ExecStart=/home/pi/wheelofbeer/wheelofbeerserviceScript start
 ExecStop=/home/pi/wheelofbeer/wheelofbeerserviceScript stop
