@@ -1,0 +1,23 @@
+#!/bin/bash
+start() {
+  node index.js &
+   echo $!>/var/run/wheelofbeer.pid
+}
+
+stop() {
+    kill `cat /var/run/wheelofbeer.pid`
+    rm /var/run/wheelofbeer.pid
+}
+
+status() {
+    if [ -e /var/run/wheelofbeer.pid ]; then
+       echo The wheelofbeer is running, pid=`cat /var/run/wheelofbeer.pid`
+    else
+       echo wheelofbeer is NOT running
+       exit 1
+    fi
+}
+
+case $1 in
+  start|stop|status) "$1" ;;
+esac

@@ -6,9 +6,10 @@ After=network.target network-online.target
 [Service]
 Type=oneshot
 WorkingDirectory=/home/pi/wheelofbeer/
-ExecStart=/home/pi/wheelofbeer/beerServiceScript start
-ExecStop=/usr/bin/beerservice stop
-RemainAfterExit=yes
+ExecStart=/home/pi/wheelofbeer/wheelofbeerserviceScript start
+ExecStop=/home/pi/wheelofbeer/wheelofbeerserviceScript stop
+Restart=always
+RestartSec=600
 
 [Install]
 WantedBy=multi-user.target
