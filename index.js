@@ -54,7 +54,7 @@ function runBot(){
 
     sensors.forEach((sensor, index) => {
         sensor.watch(() => {
-          barIndex = (index + 2) % 8;
+          barIndex = (index + 6) % 8;
           console.log(`Sensor index ${index} => barIndex ${barIndex}`);
           TICK.play();
           console.log(sensors.map(sensor => {
