@@ -1,10 +1,10 @@
-const users = ['Alex', 'Tobbe T', 'Tobbe H', 'Oskar', 'Gustaf'];
+const users = ['Marcel', 'Tobbe T', 'Tobbe H', 'Siri'];
 
 exports.bar = function(bar){
     const randomUser = users[getRandomIndex(users.length)];
     const responses = [
-        `Vinnare är ${randomUser}s favorit; ${bar.name} på ${bar.address}\n${bar.url}`,
-        `Vi ska till <${bar.url}|${bar.name}>\n${bar.address}`
+        `Vinnare är ${randomUser}s favorit; ${bar.name}`,
+        `Vi ska till ${bar.name}`
     ];
     return responses[getRandomIndex(responses.length)];
 }

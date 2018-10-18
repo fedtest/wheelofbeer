@@ -54,8 +54,8 @@ function runBot(){
 
     sensors.forEach((sensor, index) => {
         sensor.watch(() => {
-          barIndex = index;
-          console.log(`Sensor index ${index}`);
+          barIndex = (index + 2) % 8;
+          console.log(`Sensor index ${index} => barIndex ${barIndex}`);
           TICK.play();
           console.log(sensors.map(sensor => {
               return sensor.readSync()
@@ -110,7 +110,7 @@ function runBot(){
                     }, spinTime);
                     firebase.database().ref("/locations/").once('value').then(snapshot => {
                         const locations = snapshot.val();
-                        bars = locations.map(location => ({ name: location, phone: "", open: "", address: "", url: "" }));
+                        bars = locations.map(location => ({ name: location }));
                     })
                 }
             } else if (data.text.toLowerCase() === 'trigger bar') {
