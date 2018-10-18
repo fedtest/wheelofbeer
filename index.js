@@ -7,6 +7,7 @@ let bars = require('./bars.json');
 const Gpio = require('onoff').Gpio;
 const Sound = require('node-aplay');
 const describe = require('./describe.js')
+const firebaseConfig = require('./firebase-config.js')
 const isOnline = require('is-online');
 const os = require('os');
 const say = require('say');
@@ -32,6 +33,8 @@ let wheelState = WHEEL_IDLE;
 let barIndex = 0;
 let bot;
 let previousIpAddress;
+
+firebase.initializeApp(firebaseConfig);
 
 portId.forEach(port => sensors.push(new Gpio(port, 'in', 'falling')));
 function startup(){
