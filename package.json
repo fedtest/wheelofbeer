@@ -6,6 +6,7 @@
   "author": "Com Hem Team Web",
   "license": "ISC",
   "dependencies": {
+    "firebase": "^5.5.4",
     "is-online": "^5.1.2",
     "node-aplay": "^1.0.3",
     "onoff": "1.1.1",

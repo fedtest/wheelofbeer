@@ -3,13 +3,15 @@
 const SlackBot = require('slackbots');
 const config = require('./config.json');
 const audioConfig = require('./audio-config.json');
-const bars = require('./bars.json');
+let bars = require('./bars.json');
 const Gpio = require('onoff').Gpio;
 const Sound = require('node-aplay');
 const describe = require('./describe.js')
 const isOnline = require('is-online');
 const os = require('os');
 const say = require('say');
+const firebase = require('firebase/app');
+require('firebase/database');
 
 const minSpinTimeMS = 15000;
 const maxSpinTimeMS = 25000;
@@ -103,6 +105,10 @@ function runBot(){
                             });
                         }, TIMEOUT_AFTER_END);
                     }, spinTime);
+                    firebase.database().ref("/locations/").once('value').then(snapshot => {
+                        const locations = snapshot.val();
+                        bars = locations.map(location => ({ name: location, phone: "", open: "", address: "", url: "" }));
+                    })
                 }
             } else if (data.text.toLowerCase() === 'trigger bar') {
                 var bar = bars[barIndex];
