@@ -126,7 +126,7 @@ function runBot(){
                     icon_emoji: ':beers:',
                 });
             } else if (data.text.toLowerCase() === 'list bars') {
-                const barList = bars.map(describe.bar).join('\n');
+                const barList = bars.map(bar => bar.name).join('\n');
                 bot.postMessage(data.channel, barList, {
                     icon_emoji: ':beers:',
                 });
