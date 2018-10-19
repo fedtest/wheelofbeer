@@ -54,7 +54,7 @@ function runBot(){
     const ipAddress = os.networkInterfaces().wlan0.filter(a => a.family === 'IPv4')[0].address;
     if (ipAddress !== previousIpAddress) {
         previousIpAddress = ipAddress;
-        bot.postMessageToChannel('random', `I am back, my IP is: ${ipAddress}`, {
+        bot.postMessageToChannel('wheelofbeer', `I am back, my IP is: ${ipAddress}`, {
              icon_emoji: ':beer:',
         });
     }
